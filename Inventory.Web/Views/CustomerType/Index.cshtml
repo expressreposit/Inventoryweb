@@ -1,0 +1,54 @@
+﻿@using Inventory.Repository.Paging;
+@using Inventory.ViewModel.Customer;
+@model PagedResult<CustomerTypeListViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-8">
+        Add New Customer Type
+        <a asp-action="Create" class="btn btn-primary">Add</a>
+    </div>
+    <div class="col-4"><partial name="_search"/>
+    </div>
+    <div class="row">
+       <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Customer-Type Id
+                    </th>
+                    <th>
+                        Type Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Data)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerTypeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerTypeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            <a asp-route-id="@item.CustomerTypeId" asp-action="Edit" class="btn btn-primary">Edit</a>
+                            <a asp-route-id="@item.CustomerTypeId" asp-action="Delete" class="btn btn-primary">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

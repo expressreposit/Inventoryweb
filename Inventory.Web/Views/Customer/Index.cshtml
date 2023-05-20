@@ -1,0 +1,94 @@
+﻿@using Inventory.Repository.Paging;
+@model PagedResult<Inventory.ViewModel.Customer.CustomerViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-8">
+        Add New Customer
+        <a asp-action="Create" class="btn btn-primary">Add</a>
+    </div>
+    <div class="col-4"><partial name="_search" /></div>
+    <div class="row">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               CustomerId
+            </th>
+            <th>
+                Cusomer Name
+            </th>
+            <th>
+                Customer Type Id
+            </th>
+            <th>
+               Address
+            </th>
+            <th>
+               City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+               ZipCode
+            </th>
+            <th>
+              Phone
+            </th>
+            <th>
+               Email
+            </th>
+            <th>
+                ContactPerson
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Data) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZioCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactPerson)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.CustomerId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
